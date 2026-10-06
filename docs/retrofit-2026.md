@@ -66,61 +66,59 @@ Current state:
 - solder pads are the weak service point: wires can detach;
 - current LED assembly is not designed for fast service / hot swap.
 
+### Ordered replacements / spares
+
+On **2026-10-07**, six COB modules were ordered from AliExpress:
+
+https://de.aliexpress.com/item/1005007557573698.html
+
+Listing family: **DC12V / 32V 50W COB LED with integrated Smart-IC driver**.
+
+The order is intended to provide replacements and spares for UNGROUND. On arrival, confirm the exact selected variant before standardising all projectors:
+
+- **12 V / 50 W** version;
+- chosen colour temperature / light colour;
+- footprint and mounting-hole geometry;
+- brightness compared with the current proven COBs;
+- thermal behaviour on the existing heatsink;
+- contact-pad geometry and solderability;
+- actual current draw at 12 V.
+
 Retrofit rule:
 
 **The main harness must never mechanically pull on the COB electrical contacts.**
 
-### Option A — keep existing COBs
+### Preferred connection for the ordered COBs
 
-Preferred assembly:
+Keep the existing bolted thermal mounting:
 
 ```text
-COB pads
+COB
+  |
+thermal paste
+  |
+existing heatsink
+```
+
+For power:
+
+```text
+COB + / - pads
   |
 short flexible silicone-wire tails
   |
-mechanical strain relief fixed to the LED/heatsink structure
+mechanical cable clamp / strain relief fixed to heatsink or nearby structure
   |
 2-pin service connector
   |
 projector harness
 ```
 
-A future 3D-printed frame can hold strain relief or spring contacts, but the LED-to-heatsink clamping force should continue to be carried by metal fasteners, not by a heat-softening printed part.
+The strain-relief clamp should be close enough to the COB that the solder joint never flexes when the harness is moved.
 
-### Option B — 12 V COB with large terminal ears / holes
+A future 3D-printed part can be very small: it only needs to clamp the two short wires to a fixed part of the heatsink / projector. It should not carry the COB-to-heatsink clamping force.
 
-This is mechanically attractive for a serviceable version.
-
-If the large + / - ears are genuinely conductive terminals and electrically isolated from the heatsink, use a **small through-bolt + crimped ring lug / fork lug** rather than soldering the main cable to the LED.
-
-Preferred contact stack:
-
-```text
-small bolt
-  |
-flat washer
-  |
-crimp ring / fork terminal on flexible wire
-  |
-conductive + or - LED tab
-  |
-flat washer / nut
-```
-
-The current should flow through the ring/fork terminal directly against the LED terminal surface; do not rely on the screw thread itself as the electrical conductor.
-
-Add strain relief immediately after the terminal and then a separate 2-pin service connector for true hot-swap servicing.
-
-**Do not use crocodile clips for permanent exhibition operation.** They are useful for bench testing but can shift, lose contact pressure or short against the metal structure.
-
-Before adopting a terminal-hole COB:
-
-1. verify continuity from the hole / ear to the corresponding + or - pad;
-2. verify there is no electrical continuity from either terminal to the aluminium thermal substrate / heatsink;
-3. measure real current at 12 V;
-4. compare brightness and beam performance with the current known-good COB;
-5. run a multi-hour thermal test.
+**Do not use crocodile clips for permanent exhibition operation.** They remain useful only for bench testing.
 
 ## Cooling
 
@@ -182,11 +180,12 @@ If the motor fits mechanically, motor control can remain extremely simple:
 4. Check rear clearance for the ordered 12 V DC motor.
 5. Fit one ordered motor and reuse / adapt the existing aluminium pinion.
 6. Service and retain one existing 12 V fan.
-7. Build a fused 12 V distribution harness with strain relief.
-8. Prototype the LED quick-connect approach.
-9. Run a long burn-in test before duplicating the retrofit across the remaining projectors.
-10. Standardise connectors, polarity and cable labels on all units.
-11. Prepare spare LED / fan / wiring parts for exhibition service.
+7. Fit one of the newly ordered COBs to the existing heatsink.
+8. Add short silicone-wire tails + strain relief + a 2-pin service connector.
+9. Build a fused 12 V distribution harness.
+10. Run a long burn-in test before duplicating the retrofit across the remaining projectors.
+11. Standardise connectors, polarity and cable labels on all units.
+12. Keep the remaining ordered COBs as matched spares / replacements.
 
 ## Open measurements
 
@@ -198,4 +197,4 @@ Still to record:
 - existing aluminium pinion bore / screw-lock profile;
 - fan connector / pinout and airflow direction;
 - preferred panel connector and fuse value after current measurement;
-- electrical isolation / terminal geometry of any replacement 12 V COB with screw ears.
+- exact ordered COB colour variant and mounting geometry after delivery.
